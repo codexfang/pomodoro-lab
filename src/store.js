@@ -108,7 +108,7 @@ const useStore = create((set, get) => ({
       if (state.soundEnabled) {
         playNotificationSound();
       }
-      if (Notification.permission === 'granted') {
+      if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
         const labels = { work: 'Focus session', shortBreak: 'Short break', longBreak: 'Long break' };
         new Notification('Pomodoro Lab', { body: `${labels[mode]} completed!` });
       }
